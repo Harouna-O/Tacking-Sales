@@ -188,5 +188,6 @@ st.plotly_chart(data1, use_container_width=True)
 with st.expander("View Data of Scatter Plot"):
     st.write(filtered_df.iloc[:500, 1:20:2].style.background_gradient(cmap='Reds'))
 
+st.page_link("Adidas_DASH.py", label="Allez à la page Adidas") # naviguer entre les pages
                       
                     
