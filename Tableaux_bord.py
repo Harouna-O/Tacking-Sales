@@ -12,14 +12,13 @@ st.set_page_config(page_title="Tableaux de bord Superstore!!!",page_icon=":bar_c
 st.title(":bar_chart: Sample SuperStore EDA")
 st.markdown('<style>div.block-container{paddy-top:1rem;}</style>', unsafe_allow_html=True)
 #upload data
-fl=st.file_uploader(":File_folder: Upload a file", type=(["csv", "xlsx", "xls", "txt"]))
+fl = st.file_uploader(":file_folder: Upload a file", type=(["csv", "xlsx", "xls", "txt"]))
 if fl is not None:
-    filename= fl.name
+    filename = fl.name
     st.write(filename)
-    df= pd.read_excel(filename) 
+    df = pd.read_excel(fl)  # lire directement le fichier uploadé
 else:
-    os.chdir(r"C:/Users/LENOVO/Desktop/Formation Streamlit/DASH")
-    df=pd.read_excel("Superstore.xls")
+    df = pd.read_excel("Superstore.xls")  # chemin relatif
 col1, col2 = st.columns(2)
 df['Order Date'] = pd.to_datetime(df['Order Date'])
 
@@ -188,6 +187,6 @@ st.plotly_chart(data1, use_container_width=True)
 with st.expander("View Data of Scatter Plot"):
     st.write(filtered_df.iloc[:500, 1:20:2].style.background_gradient(cmap='Reds'))
 
-st.page_link("Adidas_DASH.py", label="Allez à la page Adidas") # naviguer entre les pages
+#st.page_link("Adidas_DASH.py", label="Allez à la page Adidas") # naviguer entre les pages
                       
-                    
+                
